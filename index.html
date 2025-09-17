@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Voucher American Express - Classifica Convenienza</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .tier {
+            margin-bottom: 40px;
+        }
+        
+        .tier-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .tier-gold {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+        }
+        
+        .tier-silver {
+            background: linear-gradient(135deg, #C0C0C0, #808080);
+            color: white;
+        }
+        
+        .tier-bronze {
+            background: linear-gradient(135deg, #CD7F32, #A0522D);
+            color: white;
+        }
+        
+        .tier-basic {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+        }
+        
+        .voucher-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .voucher-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #007bff;
+        }
+        
+        .voucher-info {
+            flex: 1;
+        }
+        
+        .voucher-brand {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+        
+        .voucher-desc {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .voucher-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9em;
+        }
+        
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .voucher-rating {
+            text-align: right;
+            flex-shrink: 0;
+        }
+        
+        .rating-score {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #28a745;
+        }
+        
+        .rating-label {
+            font-size: 0.8em;
+            color: #666;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .legend h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .legend-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 600px) {
+            .voucher-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .voucher-stats {
+                justify-content: center;
+            }
+            
+            .voucher-rating {
+                text-align: center;
+                margin-top: 10px;
+            }
+        }
+        
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+            .header { background: #1e3c72 !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💳 Guida Voucher American Express</h1>
+            <p>Classifica per Convenienza - Membership Rewards</p>
+        </div>
+        
+        <div class="content">
+            <div class="legend">
+                <h3>📊 Come leggere questa guida</h3>
+                <div class="legend-item">
+                    <span>💰</span> <strong>Valore:</strong> Importo del voucher in euro
+                </div>
+                <div class="legend-item">
+                    <span>🎯</span> <strong>Punti:</strong> Punti Membership Rewards necessari
+                </div>
+                <div class="legend-item">
+                    <span>📈</span> <strong>Convenienza:</strong> Euro ricevuti per ogni punto speso (più alto = più conveniente)
+                </div>
+                <div class="legend-item">
+                    <span>🏆</span> <strong>Ordine:</strong> Dal più conveniente al meno conveniente
+                </div>
+            </div>
+            
+            <!-- TIER 1: TOP CONVENIENTI -->
+            <div class="tier">
+                <div class="tier-header tier-gold">
+                    <span>🏆</span>
+                    <span style="margin-left: 10px;">TIER 1 - TOP CONVENIENTI</span>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🚄 Italo</div>
+                        <div class="voucher-desc">Voucher elettronico 100 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€100</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>19.700 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0051</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🚄 Italo</div>
+                        <div class="voucher-desc">Voucher elettronico 50 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€50</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>10.500 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0048</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🚄 Italo</div>
+                        <div class="voucher-desc">Voucher elettronico 130 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€130</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>27.300 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0048</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🚄 Italo</div>
+                        <div class="voucher-desc">Voucher elettronico 30 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€30</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>6.700 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0045</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TIER 2: MOLTO CONVENIENTI -->
+            <div class="tier">
+                <div class="tier-header tier-silver">
+                    <span>🥈</span>
+                    <span style="margin-left: 10px;">TIER 2 - MOLTO CONVENIENTI</span>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">💄 Douglas</div>
+                        <div class="voucher-desc">Gift Card Douglas 100 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€100</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>23.800 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0042</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">💳 American Express</div>
+                        <div class="voucher-desc">Quota Club MR Classic</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€25</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>6.500 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0038</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">👗 Zalando</div>
+                        <div class="voucher-desc">Buono Regalo Zalando 10 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€10</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>2.700 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0037</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TIER 3: BUONI -->
+            <div class="tier">
+                <div class="tier-header tier-bronze">
+                    <span>🥉</span>
+                    <span style="margin-left: 10px;">TIER 3 - BUONA CONVENIENZA</span>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">👗 Zalando</div>
+                        <div class="voucher-desc">Buono Regalo Zalando 100 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€100</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>27.700 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0036</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">📦 Amazon</div>
+                        <div class="voucher-desc">Codice elettronico 10 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€10</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>2.800 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0036</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🛒 Esselunga</div>
+                        <div class="voucher-desc">Codice elettronico 10 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€10</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>2.800 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0036</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🏃‍♂️ Decathlon</div>
+                        <div class="voucher-desc">Codice elettronico 10 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€10</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>2.800 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0036</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TIER 4: STANDARD -->
+            <div class="tier">
+                <div class="tier-header tier-basic">
+                    <span>📊</span>
+                    <span style="margin-left: 10px;">TIER 4 - CONVENIENZA STANDARD</span>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🍷 Tannico</div>
+                        <div class="voucher-desc">Codice elettronico 100 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€100</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>28.200 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0035</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🏠 IKEA</div>
+                        <div class="voucher-desc">Codice elettronico 50 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€50</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>14.300 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0035</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🏃‍♂️ Decathlon</div>
+                        <div class="voucher-desc">Codice elettronico 50 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€50</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>14.300 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0035</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">📦 Amazon</div>
+                        <div class="voucher-desc">Codice elettronico 40 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€40</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>11.500 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0035</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🛒 Esselunga</div>
+                        <div class="voucher-desc">Codice elettronico 25 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€25</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>7.200 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0035</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🛒 Esselunga</div>
+                        <div class="voucher-desc">Codice elettronico 100 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€100</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>28.800 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0035</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🛍️ Rinascente</div>
+                        <div class="voucher-desc">Codice elettronico 100 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€100</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>28.800 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0035</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">📦 Amazon</div>
+                        <div class="voucher-desc">Codice elettronico 100 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€100</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>28.900 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0035</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🛒 Carrefour</div>
+                        <div class="voucher-desc">Codice elettronico 10 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€10</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>2.900 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0034</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">🛒 Carrefour</div>
+                        <div class="voucher-desc">Codice elettronico 50 €</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€50</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>14.500 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0034</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">📱 MediaWorld</div>
+                        <div class="voucher-desc">Codice elettronico 25 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€25</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>7.300 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0034</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+                
+                <div class="voucher-item">
+                    <div class="voucher-info">
+                        <div class="voucher-brand">📱 MediaWorld</div>
+                        <div class="voucher-desc">Codice elettronico 100 euro</div>
+                        <div class="voucher-stats">
+                            <div class="stat">
+                                <span>💰</span>
+                                <span>€100</span>
+                            </div>
+                            <div class="stat">
+                                <span>🎯</span>
+                                <span>29.200 punti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="voucher-rating">
+                        <div class="rating-score">€0.0034</div>
+                        <div class="rating-label">per punto</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📅 <strong>Dati aggiornati al:</strong> 1 agosto 2025 | 📋 <strong>Fonte:</strong> Regolamento Membership Rewards American Express</p>
+            <p>⚠️ <strong>Nota:</strong> La disponibilità dei voucher può variare nel tempo. Controlla sempre il sito americanexpress.it/premi per le offerte aggiornate.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Add print functionality
+        function printPDF() {
+            window.print();
+        }
+        
+        // Add keyboard shortcut for printing
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                printPDF();
+            }
+        });
+        
+        // Add smooth scrolling for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
